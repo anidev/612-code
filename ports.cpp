@@ -44,15 +44,7 @@
 
 //just define & initialize all of the consts in ports.h
 
-//slots table - in order to make sync with electrical easier.
-const module_t slot1 = 1; //1st analog
-const module_t slot2 = 1; //1st digital
-const module_t slot3 = 1; //1st solenoid
-const module_t slot4 = 0; //EMPTY
-const module_t slot5 = 2; //2nd analog
-const module_t slot6 = 2; //2nd digital
-const module_t slot7 = 2; //2nd solenoid
-const module_t slot8 = 0; //EMPTY
+
 
 //camera IP address:
 const char * cameraIP = "10.6.12.11"; //static IP, camera configured for connection to bridge
@@ -68,7 +60,6 @@ Jaguar right_rear_jag                   ( slot2,     4 );
 Jaguar turret_rotation_jag              ( slot2,     5 );
 Servo right_servo_shift                 ( slot2,     6 );
 
-Jaguar turret_winch_jag                 ( slot6,     1 );
 Jaguar left_front_jag                   ( slot6,     2 );
 Jaguar left_rear_jag                    ( slot6,     3 );
 Servo left_servo_shift                  ( slot6,     4 );
@@ -91,7 +82,6 @@ DigitalInput turret_limit_left          ( slot2,     7 );
 
 Counter launcher_wheel                  ( slot2,    10 );
 
-DigitalInput launch_angle_switch        ( slot6,     1 );
 Ultrasonic front_ultrasonic             ( slot6,     2,
                                           slot6,     3 );
 Encoder left_drive                      ( slot6,     4,
@@ -104,8 +94,8 @@ DigitalOutput camera_led_digital        ( slot6,     8 );
 //we should use Ultrasonic::GetRangeInches().
 
 //AIOs                                    SLOT     PORT
-AnalogChannel launch_angle_pot          ( slot1,     1 );
-AnalogChannel density_pot               ( slot1,     2 );
+//AnalogChannel launch_angle_pot          ( slot1,     1 );
+//AnalogChannel density_pot               ( slot1,     2 );
 
 //Relays                                  SLOT     PORT
 Relay roller_spike_1                    ( slot6,     1 );
@@ -141,12 +131,9 @@ shifter servo_shifter(left_servo_shift, right_servo_shift);
 //turret
 turret shooter_turret(
     turret_rotation_jag,
-    turret_winch_jag,
     left_launcher_jag,
     right_launcher_jag,
     launcher_wheel,
-    launch_angle_pot,
-    launch_angle_switch,
     turret_limit_left,
     turret_limit_mid,
     turret_limit_right

@@ -5,16 +5,17 @@
 #include "winch.h"
 #include "update.h"
 #include "trajectory.h"
+#include "ports.h"
 
 const float WINCH_TOLERANCE = 0.075;
 const float WINCH_SPEED = 0.35;
 
 void winch_update_helper(void*);
 
-winch::winch(Jaguar& j, AnalogChannel& c, DigitalInput& l) {
-    jag = &j;
-    pot = &c;
-    limit = &l;
+winch::winch() {
+    jag = new Jaguar(turret_winch_jag.slot,turret_winch_jag.port);
+    pot = new AnalogChannel(launch_angle_pot.slot,launch_angle_pot.port);
+    limit = new DigitalInput(launch_angle_switch.slot,launch_angle_switch.port);
     //winch starts enabled by default, as winch should always be enabled and
     //updating.
     desired_pot_voltage = pot->GetVoltage();
