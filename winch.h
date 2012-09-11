@@ -4,7 +4,6 @@
 #include <Jaguar.h>
 #include <AnalogChannel.h>
 #include <DigitalInput.h>
-#include "pid_controller.h"
 
 class winch {
 public:
@@ -13,7 +12,7 @@ public:
         DOWN,
         OFF
     };
-    winch(Jaguar&, AnalogChannel&, DigitalInput&);
+    winch();
     ~winch();
     void enable();
     void disable();

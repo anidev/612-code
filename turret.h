@@ -33,7 +33,7 @@
 
 class turret {
 public:
-    turret(Jaguar&, Jaguar&, Jaguar&, Jaguar&, Counter&, AnalogChannel&, DigitalInput&, DigitalInput&, DigitalInput&, DigitalInput&);
+    turret(Jaguar&, /*Jaguar&, */Jaguar&, Jaguar&, Counter&, /*AnalogChannel&, DigitalInput&, */DigitalInput&, DigitalInput&, DigitalInput&);
     ~turret();
     void align(target&);
     void enable();

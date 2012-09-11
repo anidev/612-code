@@ -17,18 +17,18 @@
 
 turret::turret(
     Jaguar& rotate,
-    Jaguar& winch_jag,
+//    Jaguar& winch_jag,
     Jaguar& launcha,
     Jaguar& launchb,
     Counter& count,
-    AnalogChannel& pot,
-    DigitalInput& winch_limit,
+//    AnalogChannel& pot,
+//    DigitalInput& winch_limit,
     DigitalInput& turret_left,
     DigitalInput& turret_mid,
     DigitalInput& turret_right)
 {
     lazy_susan = new turntable(rotate, turret_left, turret_mid, turret_right);
-    winch_obj = new winch(winch_jag, pot, winch_limit);
+    winch_obj = new winch();
     shooter_wheels = new shooter(count, launcha, launchb);
     
     cur_target = NULL;

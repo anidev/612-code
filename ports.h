@@ -48,41 +48,42 @@ struct drive_jaguar {
     const RobotDrive::MotorType type;
     const bool reverse;
 };
+struct device {
+	module_t slot;
+	UINT32 port;
+};
 
+//slots table - in order to make sync with electrical easier.
+const module_t slot1 = 1; //1st analog
+const module_t slot2 = 1; //1st digital
+const module_t slot3 = 1; //1st solenoid
+const module_t slot4 = 0; //EMPTY
+const module_t slot5 = 2; //2nd analog
+const module_t slot6 = 2; //2nd digital
+const module_t slot7 = 2; //2nd solenoid
+const module_t slot8 = 0; //EMPTY
 //actual definitions.  Note they all must be declared 'extern'!
 
 //PWMs
+const device turret_winch_jag   =              { slot6,     1 };
 extern drive_jaguar left_front_motor;
 extern drive_jaguar right_front_motor;
 extern drive_jaguar left_rear_motor;
 extern drive_jaguar right_rear_motor;
-extern Jaguar left_launcher_jag;
-extern Jaguar right_launcher_jag;
-extern Jaguar turret_rotation_jag;
-extern Jaguar turret_winch_jag;
-extern Servo right_servo_shift;
-extern Servo left_servo_shift;
 //extern PWM camera_led; //not using PWM
 
 //DIOs
+const device launch_angle_switch  =      { slot6,     1 };
 extern Encoder right_drive;
 extern Encoder left_drive;
 extern Counter launcher_wheel;
 extern Ultrasonic front_ultrasonic;
-extern DigitalInput launch_angle_switch;
-extern DigitalInput turret_limit_left;
-extern DigitalInput turret_limit_mid;
-extern DigitalInput turret_limit_right;
 extern DigitalInput bridge_arm_switch;
 extern DigitalOutput camera_led_digital;
 
 //AIOs
-extern AnalogChannel launch_angle_pot;
-
-//Relays
-extern Relay roller_spike_1;
-extern Relay roller_spike_2;
-extern Relay bridge_arm_spike;
+const device launch_angle_pot     =     { slot1,     1 };
+//extern AnalogChannel launch_angle_pot;
 
 //USBs (on driver station)
 extern joysmooth left_joystick;
